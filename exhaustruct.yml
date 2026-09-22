@@ -2,8 +2,9 @@ version: "2"
 linters:
   default: none
   enable:
-    - exhaustruct
+    - exhaustruct_v5
   settings:
-    exhaustruct:
-      include:
+    exhaustruct_v5:
+      explicit-mode: true
+      enforce-patterns:
         - '^example\.com/guardrails/internal/report\.View$'

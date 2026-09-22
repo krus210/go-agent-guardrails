@@ -11,14 +11,14 @@ The module models a small reporting service. Each area has a passing example, a 
 | Resources | `bodyclose`, `go vet` (`lostcancel`) | Unclosed HTTP response body, discarded `cancel` |
 | Concurrency | `testing/synctest`, `goleak`, `-race` | Sender that ignores cancellation, leaked goroutine, channel deadlock, data race |
 | Architecture | `depguard`, `go/packages` test | Calculation code that reaches storage directly or through a helper package |
-| Test quality | whole-value assertions, `exhaustruct`, mutation testing | Tests that pass although a field or a boundary is wrong |
+| Test quality | whole-value assertions, `exhaustruct_v5`, mutation testing | Tests that pass although a field or a boundary is wrong |
 
 ## Requirements
 
 The examples were verified with:
 
-- Go 1.26.0 on macOS arm64;
-- golangci-lint 2.10.1 built with Go 1.26.0 (it bundles exhaustruct v4.0.0);
+- Go 1.27.1 on macOS arm64;
+- golangci-lint 2.13.2 built with Go 1.27.1 (it bundles exhaustruct v5.0.3 as `exhaustruct_v5`);
 - the `avito-tech/go-mutesting` fork at `v0.0.0-20251226130216-48d0401f00fb`;
 - Python 3.10 or newer for the verification scripts.
 
@@ -29,13 +29,13 @@ The pinned versions are listed in `tool-versions.json`. They are pinned for repr
 Run all commands from the repository root. The commands work in both bash and fish.
 
 ```sh
-GOTOOLCHAIN=go1.26.0 go version
-GOTOOLCHAIN=go1.26.0 go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.10.1
-GOTOOLCHAIN=go1.26.0 go install github.com/avito-tech/go-mutesting/cmd/go-mutesting@v0.0.0-20251226130216-48d0401f00fb
-GOTOOLCHAIN=go1.26.0 go mod download
+GOTOOLCHAIN=go1.27.1 go version
+GOTOOLCHAIN=go1.27.1 go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.2
+GOTOOLCHAIN=go1.27.1 go install github.com/avito-tech/go-mutesting/cmd/go-mutesting@v0.0.0-20251226130216-48d0401f00fb
+GOTOOLCHAIN=go1.27.1 go mod download
 ```
 
-`GOTOOLCHAIN` pins the toolchain even if another `go` comes first in `PATH`; Go may download it on first use. See [Go toolchains](https://go.dev/doc/toolchain). Make sure the Go binary directory is in `PATH` and `golangci-lint version` reports 2.10.1 built with Go 1.26.0.
+`GOTOOLCHAIN` pins the toolchain even if another `go` comes first in `PATH`; Go may download it on first use. See [Go toolchains](https://go.dev/doc/toolchain). Make sure the Go binary directory is in `PATH` and `golangci-lint version` reports 2.13.2 built with Go 1.27.1.
 
 ## Quick run
 
@@ -47,7 +47,7 @@ python3 verify.py
 python3 verify_mutation.py
 ```
 
-The first two commands must pass cleanly. The scripts set `GOTOOLCHAIN=go1.26.0` when it is unset, stop on an incompatible value, and check the installed tool versions.
+The first two commands must pass cleanly. The scripts set `GOTOOLCHAIN=go1.27.1` when it is unset, stop on an incompatible value, and check the installed tool versions.
 
 Negative examples live under `testdata`, which `./...` skips, so they are run explicitly.
 
@@ -90,10 +90,10 @@ Each nesting level adds more to the cognitive complexity: 1 + 2 + 3 = 6. The thr
 testdata/complexity/complexity.go:3:1: cognitive complexity 6 of func `CanExport` is high (> 3) (gocognit)
 ```
 
-Configuration files can be validated offline against the saved official schema. A typo such as `min-complexty` fails this step even though a plain `run` may ignore it:
+Configuration files can be validated offline: since golangci-lint 2.12 the JSON schema is embedded in the binary and the `--schema` flag is gone. A typo such as `min-complexty` fails this step even though a plain `run` may ignore it:
 
 ```sh
-golangci-lint config verify --config complexity.yml --schema file://$PWD/schemas/golangci.v2.10.jsonschema.json
+golangci-lint config verify --config complexity.yml
 ```
 
 ### Errors and resources
@@ -196,7 +196,7 @@ The test sees only Go imports. It does not detect runtime coupling, for example 
 report.View is missing field Currency
 ```
 
-`exhaustruct` checks only composite literals of the selected type. A wrong type pattern is still valid configuration, so the rule is verified against a known violation.
+`exhaustruct.yml` enables `exhaustruct_v5` with `explicit-mode: true` and an `enforce-patterns` entry for `View`; without explicit mode v5 checks every composite literal. The old `exhaustruct` (v4) linter is deprecated since golangci-lint 2.13, and its `include` setting has no direct v5 equivalent. The check covers only composite literals of the selected type. A wrong type pattern is still valid configuration, so the rule is verified against a known violation.
 
 ## Mutation testing
 

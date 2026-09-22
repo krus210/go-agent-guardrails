@@ -66,8 +66,8 @@ class EvidenceTests(unittest.TestCase):
 class MutationAndReportTests(unittest.TestCase):
     def test_report_normalizes_machine_details(self):
         output = (f"{Path.home()}/Library/Caches/go-build/entry: denied\n"
-                  "/opt/homebrew/Cellar/go/1.26.0/libexec/src/internal/sync/mutex.go:70 0x123abc\n"
-                  "/opt/homebrew/Cellar/go/1.26.0/libexec/src/time/sleep.go:215")
+                  "/opt/homebrew/Cellar/go/1.27.1/libexec/src/internal/sync/mutex.go:70 0x123abc\n"
+                  "/opt/homebrew/Cellar/go/1.27.1/libexec/src/time/sleep.go:215")
         normalized = normalize(output)
         self.assertNotIn(str(Path.home()), normalized)
         self.assertNotIn("/opt/homebrew/", normalized)

@@ -22,7 +22,7 @@ def main():
         # Fixed temp root avoids spaces: go-mutesting splits --exec on plain spaces.
         with tempfile.TemporaryDirectory(prefix="guardrails-mutation-", dir="/tmp") as folder:
             work = Path(folder)
-            (work / "go.mod").write_text("module example.com/mutationdemo\n\ngo 1.26.0\n")
+            (work / "go.mod").write_text("module example.com/mutationdemo\n\ngo 1.27.0\n")
             for name in ["mutation_executor.py", "checks.py", "tool-versions.json"]:
                 shutil.copyfile(ROOT / name, work / name)
             original = (ROOT / "internal/policy/limit.go").read_bytes()

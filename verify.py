@@ -13,7 +13,6 @@ RESULTS = []
 LINT_FLAGS = ["--output.json.path=stdout", "--output.text.path=/dev/null",
               "--show-stats=false", "--max-issues-per-linter=0", "--max-same-issues=0",
               "--uniq-by-line=false"]
-SCHEMA = ROOT / "schemas/golangci.v2.10.jsonschema.json"
 
 
 def check(name, command, cwd, judge, reject=False, env=None):
@@ -45,7 +44,7 @@ def lint(name, cwd, target, config=".golangci.yml", linter=None, diagnostic=None
 
 
 def schema(name, cwd, config, invalid_key=None):
-    command = ["golangci-lint", "config", "verify", "-c", config, "--schema", SCHEMA.as_uri()]
+    command = ["golangci-lint", "config", "verify", "-c", config]
     def judge(result):
         if result.get("execution_error"):
             return False, "schema validator could not execute"
@@ -130,10 +129,10 @@ def main():
             go("whole result detects wrong field", work, "./internal/report", "TestToView", r"ToView\(\) = .*want")
             report.write_text(original_report.replace("type View struct {", "type View struct {\n Currency string"))
             go("new zero field survives equality", work, "./internal/report", "TestToView")
-            lint("exhaustruct checks new field", work, "./internal/report", "exhaustruct.yml", "exhaustruct", r"View is missing field Currency")
+            lint("exhaustruct checks new field", work, "./internal/report", "exhaustruct.yml", "exhaustruct_v5", r"View is missing field Currency")
             bad_config.write_text((work / "exhaustruct.yml").read_text().replace("internal/report", "internal/typo"))
             schema("schema permits syntactically valid wrong scope", work, "bad.yml")
-            lint("counterexample rejects wrong exhaustruct scope", work, "./internal/report", "bad.yml", "exhaustruct", r"View is missing field Currency", True)
+            lint("counterexample rejects wrong exhaustruct scope", work, "./internal/report", "bad.yml", "exhaustruct_v5", r"View is missing field Currency", True)
             report.write_text(original_report)
             calc = work / "internal/reportcalc/calc.go"
             original_calc = calc.read_text()
