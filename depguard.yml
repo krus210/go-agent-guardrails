@@ -1,0 +1,18 @@
+version: "2"
+linters:
+  default: none
+  enable:
+    - depguard
+  settings:
+    depguard:
+      rules:
+        calculation:
+          files:
+            - '**/internal/reportcalc/*.go'
+            - '**/internal/reportcalc/**/*.go'
+            - '!$test'
+          deny:
+            - pkg: example.com/guardrails/internal/storage$
+              desc: calculations must not depend on storage
+            - pkg: example.com/guardrails/internal/storage/
+              desc: calculations must not depend on storage

@@ -1,0 +1,9 @@
+version: "2"
+linters:
+  default: none
+  enable:
+    - exhaustruct
+  settings:
+    exhaustruct:
+      include:
+        - '^example\.com/guardrails/internal/report\.View$'

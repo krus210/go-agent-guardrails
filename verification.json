@@ -1,0 +1,999 @@
+{
+  "schema_version": 2,
+  "created_at": "20260916T183438.246418Z",
+  "tools": {
+    "go": "go1.26.0",
+    "GOTOOLCHAIN": "go1.26.0",
+    "GOOS": "darwin",
+    "GOARCH": "arm64",
+    "CGO_ENABLED": "1",
+    "golangci-lint": "2.10.1",
+    "golangci-lint-build-go": "go1.26.0"
+  },
+  "verified": true,
+  "error": null,
+  "results": [
+    {
+      "name": "schema .golangci.yml",
+      "command": [
+        "golangci-lint",
+        "config",
+        "verify",
+        "-c",
+        ".golangci.yml",
+        "--schema",
+        "file://<example>/schemas/golangci.v2.10.jsonschema.json"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "schema validation must succeed",
+      "returncode": 0,
+      "output": "",
+      "execution_error": false
+    },
+    {
+      "name": "schema naming.yml",
+      "command": [
+        "golangci-lint",
+        "config",
+        "verify",
+        "-c",
+        "naming.yml",
+        "--schema",
+        "file://<example>/schemas/golangci.v2.10.jsonschema.json"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "schema validation must succeed",
+      "returncode": 0,
+      "output": "",
+      "execution_error": false
+    },
+    {
+      "name": "schema complexity.yml",
+      "command": [
+        "golangci-lint",
+        "config",
+        "verify",
+        "-c",
+        "complexity.yml",
+        "--schema",
+        "file://<example>/schemas/golangci.v2.10.jsonschema.json"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "schema validation must succeed",
+      "returncode": 0,
+      "output": "",
+      "execution_error": false
+    },
+    {
+      "name": "schema exhaustruct.yml",
+      "command": [
+        "golangci-lint",
+        "config",
+        "verify",
+        "-c",
+        "exhaustruct.yml",
+        "--schema",
+        "file://<example>/schemas/golangci.v2.10.jsonschema.json"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "schema validation must succeed",
+      "returncode": 0,
+      "output": "",
+      "execution_error": false
+    },
+    {
+      "name": "schema depguard.yml",
+      "command": [
+        "golangci-lint",
+        "config",
+        "verify",
+        "-c",
+        "depguard.yml",
+        "--schema",
+        "file://<example>/schemas/golangci.v2.10.jsonschema.json"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "schema validation must succeed",
+      "returncode": 0,
+      "output": "",
+      "execution_error": false
+    },
+    {
+      "name": "normal tests and race detector",
+      "command": [
+        "go",
+        "test",
+        "-race",
+        "-json",
+        "-count=1",
+        "-timeout=30s",
+        "./..."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 0,
+      "output": "{\"Time\":\"2026-09-16T21:34:02.124791+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:02.124874+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/download\"}\n{\"Time\":\"2026-09-16T21:34:02.124886+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/download\",\"Output\":\"?   \\texample.com/guardrails/internal/download\\t[no test files]\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.124899+03:00\",\"Action\":\"skip\",\"Package\":\"example.com/guardrails/internal/download\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.124939+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/policy\"}\n{\"Time\":\"2026-09-16T21:34:02.124982+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/report\"}\n{\"Time\":\"2026-09-16T21:34:02.125025+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/reportcalc\"}\n{\"Time\":\"2026-09-16T21:34:02.125057+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/reportcalc\",\"Output\":\"?   \\texample.com/guardrails/internal/reportcalc\\t[no test files]\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.125066+03:00\",\"Action\":\"skip\",\"Package\":\"example.com/guardrails/internal/reportcalc\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.125078+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/shared\"}\n{\"Time\":\"2026-09-16T21:34:02.125089+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/shared\",\"Output\":\"?   \\texample.com/guardrails/internal/shared\\t[no test files]\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.125096+03:00\",\"Action\":\"skip\",\"Package\":\"example.com/guardrails/internal/shared\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.125102+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/storage\"}\n{\"Time\":\"2026-09-16T21:34:02.125126+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/storage\",\"Output\":\"?   \\texample.com/guardrails/internal/storage\\t[no test files]\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.125131+03:00\",\"Action\":\"skip\",\"Package\":\"example.com/guardrails/internal/storage\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.125145+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/storage/reader\"}\n{\"Time\":\"2026-09-16T21:34:02.125159+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/storage/reader\",\"Output\":\"?   \\texample.com/guardrails/internal/storage/reader\\t[no test files]\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.12519+03:00\",\"Action\":\"skip\",\"Package\":\"example.com/guardrails/internal/storage/reader\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.125213+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/storagecache\"}\n{\"Time\":\"2026-09-16T21:34:02.125257+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/storagecache\",\"Output\":\"?   \\texample.com/guardrails/internal/storagecache\\t[no test files]\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.125278+03:00\",\"Action\":\"skip\",\"Package\":\"example.com/guardrails/internal/storagecache\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.512374+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:34:02.512434+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.512529+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/below\"}\n{\"Time\":\"2026-09-16T21:34:02.512534+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/below\",\"Output\":\"=== RUN   TestAllowed/below\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.512566+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/below\",\"Output\":\"--- PASS: TestAllowed/below (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.512574+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/below\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.512601+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/boundary\"}\n{\"Time\":\"2026-09-16T21:34:02.512604+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"=== RUN   TestAllowed/boundary\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.512634+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"--- PASS: TestAllowed/boundary (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.51265+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/boundary\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.51267+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/above\"}\n{\"Time\":\"2026-09-16T21:34:02.512676+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/above\",\"Output\":\"=== RUN   TestAllowed/above\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.512726+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/above\",\"Output\":\"--- PASS: TestAllowed/above (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.512755+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/above\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.512787+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\",\"Output\":\"--- PASS: TestAllowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.512803+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.512859+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.844308+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\"}\n{\"Time\":\"2026-09-16T21:34:02.844324+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Output\":\"=== RUN   TestToView\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.844363+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Output\":\"--- PASS: TestToView (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.844383+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.844398+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\"}\n{\"Time\":\"2026-09-16T21:34:02.844399+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"=== RUN   TestForwardCancellation\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.844541+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"--- PASS: TestForwardCancellation (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.844548+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.844557+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardDelivery\"}\n{\"Time\":\"2026-09-16T21:34:02.844559+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardDelivery\",\"Output\":\"=== RUN   TestForwardDelivery\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.844821+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardDelivery\",\"Output\":\"--- PASS: TestForwardDelivery (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:02.844828+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardDelivery\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:02.844839+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:34:03.231403+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:03.231427+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:03.520483+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Output\":\"ok  \\texample.com/guardrails/internal/policy\\t1.395s\\n\"}\n{\"Time\":\"2026-09-16T21:34:03.520511+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/policy\",\"Elapsed\":1.396}\n{\"Time\":\"2026-09-16T21:34:03.855565+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"ok  \\texample.com/guardrails/internal/report\\t1.731s\\n\"}\n{\"Time\":\"2026-09-16T21:34:03.855605+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/report\",\"Elapsed\":1.7309999999999999}\n{\"Time\":\"2026-09-16T21:34:05.086442+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- PASS: TestArchitecture (1.86s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.086468+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":1.86}\n{\"Time\":\"2026-09-16T21:34:05.086483+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath\"}\n{\"Time\":\"2026-09-16T21:34:05.086485+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath\",\"Output\":\"=== RUN   TestForbiddenPath\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.086486+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/allowed\"}\n{\"Time\":\"2026-09-16T21:34:05.086487+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/allowed\",\"Output\":\"=== RUN   TestForbiddenPath/allowed\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.086532+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/allowed\",\"Output\":\"--- PASS: TestForbiddenPath/allowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.086544+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/allowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:05.086547+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/direct\"}\n{\"Time\":\"2026-09-16T21:34:05.086549+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/direct\",\"Output\":\"=== RUN   TestForbiddenPath/direct\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.086575+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/direct\",\"Output\":\"--- PASS: TestForbiddenPath/direct (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.086586+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/direct\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:05.08659+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/transitive\"}\n{\"Time\":\"2026-09-16T21:34:05.086591+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/transitive\",\"Output\":\"=== RUN   TestForbiddenPath/transitive\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.086615+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/transitive\",\"Output\":\"--- PASS: TestForbiddenPath/transitive (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.086634+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/transitive\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:05.086637+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/same_prefix\"}\n{\"Time\":\"2026-09-16T21:34:05.086638+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/same_prefix\",\"Output\":\"=== RUN   TestForbiddenPath/same_prefix\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.08667+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/same_prefix\",\"Output\":\"--- PASS: TestForbiddenPath/same_prefix (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.086675+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath/same_prefix\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:05.086694+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath\",\"Output\":\"--- PASS: TestForbiddenPath (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:05.086709+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestForbiddenPath\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:05.086724+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:34:06.124706+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"ok  \\texample.com/guardrails\\t4.000s\\n\"}\n{\"Time\":\"2026-09-16T21:34:06.124734+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Elapsed\":4}\n",
+      "execution_error": false
+    },
+    {
+      "name": "base linters",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        ".golangci.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./..."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "no issues",
+      "returncode": 0,
+      "output": "{\"Issues\":[],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\",\"Enabled\":true},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\"},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\",\"Enabled\":true},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\",\"Enabled\":true},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\",\"Enabled\":true},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\",\"Enabled\":true},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "revive catches initialism",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "naming.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./testdata/naming"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "typed linter diagnostic found",
+      "returncode": 1,
+      "output": "{\"Issues\":[{\"FromLinter\":\"revive\",\"Text\":\"var-naming: struct field UserId should be UserID\",\"Severity\":\"warning\",\"SourceLines\":[\"\\tUserId int\"],\"Pos\":{\"Filename\":\"testdata/naming/naming.go\",\"Offset\":98,\"Line\":5,\"Column\":2},\"LineRange\":{\"From\":5,\"To\":5},\"ExpectNoLint\":false,\"ExpectedNoLintLinter\":\"\"}],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\"},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\"},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\",\"Enabled\":true},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "gocognit catches nested conditions",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "complexity.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./testdata/complexity"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "typed linter diagnostic found",
+      "returncode": 1,
+      "output": "{\"Issues\":[{\"FromLinter\":\"gocognit\",\"Text\":\"cognitive complexity 6 of func `CanExport` is high (\\u003e 3)\",\"Severity\":\"\",\"SourceLines\":[\"func CanExport(active, allowed, ready bool) bool {\"],\"Pos\":{\"Filename\":\"testdata/complexity/complexity.go\",\"Offset\":20,\"Line\":3,\"Column\":1},\"ExpectNoLint\":false,\"ExpectedNoLintLinter\":\"\"}],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\"},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\"},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\",\"Enabled\":true},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "bodyclose finds missing close",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        ".golangci.yml",
+        "--enable-only=bodyclose",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./testdata/bodyclose"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "typed linter diagnostic found",
+      "returncode": 1,
+      "output": "{\"Issues\":[{\"FromLinter\":\"bodyclose\",\"Text\":\"response body must be closed\",\"Severity\":\"\",\"SourceLines\":[\"\\tresponse, err := http.Get(url)\"],\"Pos\":{\"Filename\":\"testdata/bodyclose/client.go\",\"Offset\":119,\"Line\":9,\"Column\":27},\"ExpectNoLint\":false,\"ExpectedNoLintLinter\":\"\"}],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\",\"Enabled\":true},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\"},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "vet finds lost cancel",
+      "command": [
+        "go",
+        "vet",
+        "./testdata/lostcancel"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "lostcancel diagnostic required",
+      "returncode": 1,
+      "output": "testdata/lostcancel/context.go:9:7: the cancel function returned by context.WithTimeout should be called, not discarded, to avoid a context leak\n",
+      "execution_error": false
+    },
+    {
+      "name": "goleak finds blocked sender",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestLeak$",
+        "./testdata/leak"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:07.9921+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/testdata/leak\"}\n{\"Time\":\"2026-09-16T21:34:08.385225+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\"}\n{\"Time\":\"2026-09-16T21:34:08.385254+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\",\"Output\":\"=== RUN   TestLeak\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.834425+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\",\"Output\":\"    leak_test.go:12: found unexpected goroutines:\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.83452+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\",\"Output\":\"        [Goroutine 35 in state chan send, with example.com/guardrails/testdata/leak.TestLeak.func1 on top of the stack:\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.834587+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\",\"Output\":\"        example.com/guardrails/testdata/leak.TestLeak.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.834606+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\",\"Output\":\"        \\t<example>/testdata/leak/leak_test.go:11 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.834611+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\",\"Output\":\"        created by example.com/guardrails/testdata/leak.TestLeak in goroutine 34\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.834627+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\",\"Output\":\"        \\t<example>/testdata/leak/leak_test.go:11 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.834632+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\",\"Output\":\"        ]\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.834663+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\",\"Output\":\"--- FAIL: TestLeak (0.45s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.834694+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Test\":\"TestLeak\",\"Elapsed\":0.45}\n{\"Time\":\"2026-09-16T21:34:08.83487+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.837643+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Output\":\"FAIL\\texample.com/guardrails/testdata/leak\\t0.845s\\n\"}\n{\"Time\":\"2026-09-16T21:34:08.837713+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/testdata/leak\",\"Elapsed\":0.846}\n",
+      "execution_error": false
+    },
+    {
+      "name": "synctest finds channel deadlock",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestDeadlock$",
+        "./testdata/deadlock"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:09.033391+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/testdata/deadlock\"}\n{\"Time\":\"2026-09-16T21:34:09.418921+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\"}\n{\"Time\":\"2026-09-16T21:34:09.419012+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"=== RUN   TestDeadlock\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.419072+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"--- FAIL: TestDeadlock (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.421948+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"panic: deadlock: all goroutines in bubble are blocked [recovered, repanicked]\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.421989+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422011+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"goroutine 22 [running]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422023+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.tRunner.func1.2({<address>, <address>})\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422031+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:1974 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422033+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.tRunner.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422037+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:1977 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.42204+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"panic({<address>?, <address>?})\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422076+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/runtime/panic.go:860 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422098+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"internal/synctest.Run(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422102+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/runtime/synctest.go:251 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422107+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing/synctest.Test(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.42211+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:290 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422113+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"example.com/guardrails/testdata/deadlock.TestDeadlock(<address>?)\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422124+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<example>/testdata/deadlock/deadlock_test.go:9 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422143+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422146+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.42216+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"created by testing.(*T).Run in goroutine 1\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422162+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2101 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422165+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422168+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"goroutine 23 [chan receive (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422181+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing/synctest.testingSynctestTest(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422185+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2151 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422187+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing/synctest.Test.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422189+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:291 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422192+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"created by testing/synctest.Test in goroutine 22\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422195+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:290 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422198+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.4222+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"goroutine 24 [chan send (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422203+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"example.com/guardrails/testdata/deadlock.TestDeadlock.func1(<address>?)\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422206+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<example>/testdata/deadlock/deadlock_test.go:16 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422208+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422211+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422215+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"created by testing/synctest.testingSynctestTest in goroutine 23\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422219+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2150 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422222+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422224+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"goroutine 25 [chan send (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422226+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"example.com/guardrails/testdata/deadlock.TestDeadlock.func1.1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422229+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<example>/testdata/deadlock/deadlock_test.go:13 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422232+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"created by example.com/guardrails/testdata/deadlock.TestDeadlock.func1 in goroutine 24\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.422234+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<example>/testdata/deadlock/deadlock_test.go:12 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.423454+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:09.423461+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Output\":\"FAIL\\texample.com/guardrails/testdata/deadlock\\t0.390s\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.423472+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Elapsed\":0.39}\n",
+      "execution_error": false
+    },
+    {
+      "name": "race detector finds shared access",
+      "command": [
+        "go",
+        "test",
+        "-race",
+        "-json",
+        "-count=1",
+        "./testdata/race"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:09.594056+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/testdata/race\"}\n{\"Time\":\"2026-09-16T21:34:09.946847+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\"}\n{\"Time\":\"2026-09-16T21:34:09.946882+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"=== RUN   TestRace\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947196+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"==================\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947201+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"WARNING: DATA RACE\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947202+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"Read at <address> by goroutine 8:\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.94721+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  example.com/guardrails/testdata/race.TestRace.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947217+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <example>/testdata/race/race_test.go:12 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.94722+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  sync.(*WaitGroup).Go.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947227+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <GOROOT>/src/sync/waitgroup.go:258 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.94723+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947232+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"Previous write at <address> by goroutine 9:\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947233+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  example.com/guardrails/testdata/race.TestRace.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947235+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <example>/testdata/race/race_test.go:12 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947236+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  sync.(*WaitGroup).Go.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947237+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <GOROOT>/src/sync/waitgroup.go:258 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947242+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947245+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"Goroutine 8 (running) created at:\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947246+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  sync.(*WaitGroup).Go()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947248+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <GOROOT>/src/sync/waitgroup.go:238 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947249+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  example.com/guardrails/testdata/race.TestRace()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.94725+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <example>/testdata/race/race_test.go:12 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947251+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  testing.tRunner()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947253+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947254+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  testing.(*T).Run.gowrap1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947255+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <GOROOT>/src/testing/testing.go:2101 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947257+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947258+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"Goroutine 9 (finished) created at:\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947259+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  sync.(*WaitGroup).Go()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947261+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <GOROOT>/src/sync/waitgroup.go:238 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947262+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  example.com/guardrails/testdata/race.TestRace()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947263+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <example>/testdata/race/race_test.go:12 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947265+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  testing.tRunner()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947266+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947267+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"  testing.(*T).Run.gowrap1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947268+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"      <GOROOT>/src/testing/testing.go:2101 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947269+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"==================\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947308+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"    race_test.go:15: 2\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947342+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"    testing.go:1712: race detected during execution of test\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947366+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Output\":\"--- FAIL: TestRace (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.947376+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/testdata/race\",\"Test\":\"TestRace\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:09.947396+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.948218+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/race\",\"Output\":\"FAIL\\texample.com/guardrails/testdata/race\\t0.354s\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.94823+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/testdata/race\",\"Elapsed\":0.354}\n",
+      "execution_error": false
+    },
+    {
+      "name": "reject deadlock setup failure",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestDeadlock$",
+        "./testdata/deadlock"
+      ],
+      "expected": "reject",
+      "verified": true,
+      "reason": "build or execution failure",
+      "returncode": 1,
+      "output": "{\"ImportPath\":\"example.com/guardrails/testdata/deadlock.test\",\"Action\":\"build-output\",\"Output\":\"# example.com/guardrails/testdata/deadlock\\n\"}\n{\"ImportPath\":\"example.com/guardrails/testdata/deadlock.test\",\"Action\":\"build-output\",\"Output\":\"testdata/deadlock/deadlock_test.go:9:1: missing parameter name\\n\"}\n{\"ImportPath\":\"example.com/guardrails/testdata/deadlock.test\",\"Action\":\"build-fail\"}\n{\"Time\":\"2026-09-16T21:34:09.991221+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/testdata/deadlock\"}\n{\"Time\":\"2026-09-16T21:34:09.99124+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Output\":\"FAIL\\texample.com/guardrails/testdata/deadlock [setup failed]\\n\"}\n{\"Time\":\"2026-09-16T21:34:09.991246+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Elapsed\":0,\"FailedBuild\":\"example.com/guardrails/testdata/deadlock.test\"}\n",
+      "execution_error": false
+    },
+    {
+      "name": "reject mutex timeout as bubble deadlock",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestDeadlock$",
+        "./testdata/deadlock"
+      ],
+      "expected": "reject",
+      "verified": true,
+      "reason": "build or execution failure",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:10.182632+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/testdata/deadlock\"}\n{\"Time\":\"2026-09-16T21:34:10.562573+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\"}\n{\"Time\":\"2026-09-16T21:34:10.5626+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"=== RUN   TestDeadlock\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.56749+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"panic: test timed out after 10s\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567532+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\trunning tests:\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567535+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t\\tTestDeadlock (10s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567538+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567574+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"goroutine 36 [running]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567588+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.(*M).startAlarm.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567591+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2802 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567612+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"created by time.goFunc\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567615+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/time/sleep.go:215 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567617+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567618+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"goroutine 1 [chan receive]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.56762+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.(*T).Run(<address>, {<address>?, <address>?}, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567622+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2109 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567624+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.runTests.func1(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567633+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2585 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567653+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567664+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567666+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.runTests({<address>, <address>}, {<address>, <address>}, <address>, {<address>, <address>, <address>}, {<address>?, <address>?, ...})\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567672+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2583 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567673+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.(*M).Run(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567674+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2443 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567676+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"main.main()\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567677+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t_testmain.go:46 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567678+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.56768+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"goroutine 35 [sync.Mutex.Lock]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567704+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"internal/sync.runtime_SemacquireMutex(<address>?, <address>?, <address>?)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567708+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/runtime/sema.go:95 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567709+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"internal/sync.(*Mutex).lockSlow(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567711+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/internal/sync/mutex.go:149 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567712+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"internal/sync.(*Mutex).Lock(...)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567713+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/internal/sync/mutex.go:70\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567715+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"sync.(*Mutex).Lock(...)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567716+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/sync/mutex.go:46\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567719+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"example.com/guardrails/testdata/deadlock.TestDeadlock(<address>?)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567721+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<experiment>/example/testdata/deadlock/deadlock_test.go:3 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567726+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567727+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567729+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"created by testing.(*T).Run in goroutine 1\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.567738+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Test\":\"TestDeadlock\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2101 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.568423+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Output\":\"FAIL\\texample.com/guardrails/testdata/deadlock\\t10.386s\\n\"}\n{\"Time\":\"2026-09-16T21:34:20.568449+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/testdata/deadlock\",\"Elapsed\":10.386}\n",
+      "execution_error": false
+    },
+    {
+      "name": "reject bodyclose typecheck failure",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        ".golangci.yml",
+        "--enable-only=bodyclose",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./testdata/bodyclose"
+      ],
+      "expected": "reject",
+      "verified": true,
+      "reason": "typecheck or malformed issues",
+      "returncode": 1,
+      "output": "{\"Issues\":[{\"FromLinter\":\"typecheck\",\"Text\":\": # example.com/guardrails/testdata/bodyclose\\ntestdata/bodyclose/broken.go:2:17: cannot use \\\"bodyclose\\\" (untyped string constant) as int value in variable declaration\",\"Severity\":\"\",\"SourceLines\":[\"package bodyclose\"],\"Pos\":{\"Filename\":\"testdata/bodyclose/broken.go\",\"Offset\":0,\"Line\":1,\"Column\":0},\"ExpectNoLint\":false,\"ExpectedNoLintLinter\":\"\"}],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\",\"Enabled\":true},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\"},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "reject linter configuration failure",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "bad.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./testdata/bodyclose"
+      ],
+      "expected": "reject",
+      "verified": true,
+      "reason": "linter configuration, typecheck or execution failure",
+      "returncode": 3,
+      "output": "Error: unknown linters: 'bodyclose-missing', run 'golangci-lint help linters' to see the list of supported linters\nThe command is terminated due to an error: unknown linters: 'bodyclose-missing', run 'golangci-lint help linters' to see the list of supported linters\n",
+      "execution_error": false
+    },
+    {
+      "name": "reject no-Go-files result",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        ".golangci.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./does-not-exist"
+      ],
+      "expected": "reject",
+      "verified": true,
+      "reason": "linter configuration, typecheck or execution failure",
+      "returncode": 7,
+      "output": "level=error msg=\"[linters_context] typechecking error: stat <experiment>/example/does-not-exist: directory not found\"\n{\"Issues\":[],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\",\"Enabled\":true},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\"},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\",\"Enabled\":true},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\",\"Enabled\":true},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\",\"Enabled\":true},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\",\"Enabled\":true},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}],\"Error\":\"typechecking error: stat <experiment>/example/does-not-exist: directory not found\"}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "schema rejects misspelled option",
+      "command": [
+        "golangci-lint",
+        "config",
+        "verify",
+        "-c",
+        "bad.yml",
+        "--schema",
+        "file://<example>/schemas/golangci.v2.10.jsonschema.json"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "unknown key must fail schema validation",
+      "returncode": 3,
+      "output": "jsonschema: \"linters.settings.gocognit\" does not validate with \"/properties/linters/properties/settings/properties/gocognit/$ref/additionalProperties\": additional properties 'min-complexty' not allowed\nThe command is terminated due to an error: the configuration contains invalid elements\n",
+      "execution_error": false
+    },
+    {
+      "name": "boundary mutation survives weak test",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestAllowed$",
+        "./internal/policy"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 0,
+      "output": "{\"Time\":\"2026-09-16T21:34:21.722741+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/policy\"}\n{\"Time\":\"2026-09-16T21:34:22.09469+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:34:22.094745+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.094817+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\",\"Output\":\"--- PASS: TestAllowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.094833+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:22.094838+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.095841+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Output\":\"ok  \\texample.com/guardrails/internal/policy\\t0.373s\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.095882+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/policy\",\"Elapsed\":0.373}\n",
+      "execution_error": false
+    },
+    {
+      "name": "boundary mutation killed by boundary test",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestAllowed$",
+        "./internal/policy"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:22.284545+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/policy\"}\n{\"Time\":\"2026-09-16T21:34:22.690018+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:34:22.690105+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.690143+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/below\"}\n{\"Time\":\"2026-09-16T21:34:22.690166+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/below\",\"Output\":\"=== RUN   TestAllowed/below\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.690197+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/below\",\"Output\":\"--- PASS: TestAllowed/below (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.690201+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/below\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:22.690212+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/boundary\"}\n{\"Time\":\"2026-09-16T21:34:22.690214+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"=== RUN   TestAllowed/boundary\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.69022+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"    limit_test.go:17: Allowed(10) = false, want true\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.690233+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"--- FAIL: TestAllowed/boundary (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.690234+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/boundary\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:22.690237+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/above\"}\n{\"Time\":\"2026-09-16T21:34:22.690238+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/above\",\"Output\":\"=== RUN   TestAllowed/above\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.69024+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/above\",\"Output\":\"--- PASS: TestAllowed/above (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.690242+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed/above\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:22.690243+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\",\"Output\":\"--- FAIL: TestAllowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.69025+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/policy\",\"Test\":\"TestAllowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:22.690251+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.690581+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/policy\",\"Output\":\"FAIL\\texample.com/guardrails/internal/policy\\t0.406s\\n\"}\n{\"Time\":\"2026-09-16T21:34:22.690603+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/policy\",\"Elapsed\":0.406}\n",
+      "execution_error": false
+    },
+    {
+      "name": "Forward cancellation rejects empty implementation",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestForwardCancellation$",
+        "./internal/report"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:22.902191+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/report\"}\n{\"Time\":\"2026-09-16T21:34:23.295987+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\"}\n{\"Time\":\"2026-09-16T21:34:23.296055+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"=== RUN   TestForwardCancellation\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.296074+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"    report_test.go:29: sender completed before cancellation without a receiver\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.296085+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"--- FAIL: TestForwardCancellation (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.296093+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:23.296099+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.296505+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"FAIL\\texample.com/guardrails/internal/report\\t0.394s\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.296519+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Elapsed\":0.394}\n",
+      "execution_error": false
+    },
+    {
+      "name": "Forward cancellation rejects missing cancellation case",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestForwardCancellation$",
+        "./internal/report"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:23.473868+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/report\"}\n{\"Time\":\"2026-09-16T21:34:23.818549+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\"}\n{\"Time\":\"2026-09-16T21:34:23.818601+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"=== RUN   TestForwardCancellation\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.818624+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"--- FAIL: TestForwardCancellation (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821453+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"panic: deadlock: all goroutines in bubble are blocked [recovered, repanicked]\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.82147+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821475+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 35 [running]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821487+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner.func1.2({<address>, <address>})\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821495+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:1974 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821503+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821505+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:1977 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821506+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"panic({<address>?, <address>?})\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821508+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/runtime/panic.go:860 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821509+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"internal/synctest.Run(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.82151+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/runtime/synctest.go:251 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821516+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.Test(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821539+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:290 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821551+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.TestForwardCancellation(<address>?)\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821552+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report_test.go:21 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821566+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821568+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821576+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing.(*T).Run in goroutine 1\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821578+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2101 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.82158+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821581+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 36 [chan receive (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821583+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.testingSynctestTest(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.82159+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2151 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821594+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.Test.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821596+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:291 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821598+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing/synctest.Test in goroutine 35\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821602+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:290 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821604+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821606+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 37 [chan receive (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821607+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.TestForwardCancellation.func1(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.82161+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report_test.go:33 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821612+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821614+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821616+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing/synctest.testingSynctestTest in goroutine 36\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821621+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2150 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821624+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821625+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 38 [chan send (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821635+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.Forward.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821637+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report.go:26 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821647+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by example.com/guardrails/internal/report.Forward in goroutine 37\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.821648+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report.go:23 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.822068+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:23.822073+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"FAIL\\texample.com/guardrails/internal/report\\t0.348s\\n\"}\n{\"Time\":\"2026-09-16T21:34:23.822078+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Elapsed\":0.348}\n",
+      "execution_error": false
+    },
+    {
+      "name": "Forward cancellation rejects missing done close",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestForwardCancellation$",
+        "./internal/report"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:23.99665+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/report\"}\n{\"Time\":\"2026-09-16T21:34:24.359857+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\"}\n{\"Time\":\"2026-09-16T21:34:24.359939+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"=== RUN   TestForwardCancellation\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.359962+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"--- FAIL: TestForwardCancellation (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362868+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"panic: deadlock: all goroutines in bubble are blocked [recovered, repanicked]\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362885+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.36289+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 4 [running]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362893+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner.func1.2({<address>, <address>})\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362905+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:1974 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362907+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362908+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:1977 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.36291+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"panic({<address>?, <address>?})\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362911+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/runtime/panic.go:860 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362919+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"internal/synctest.Run(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362921+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/runtime/synctest.go:251 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362923+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.Test(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362924+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:290 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362925+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.TestForwardCancellation(<address>?)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362928+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report_test.go:21 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362933+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362934+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362936+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing.(*T).Run in goroutine 1\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362937+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2101 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362938+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362942+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 5 [chan receive (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362949+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.testingSynctestTest(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362952+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2151 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362953+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.Test.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362955+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:291 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362957+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing/synctest.Test in goroutine 4\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362959+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:290 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362961+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362963+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 6 [chan receive (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362964+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.TestForwardCancellation.func1(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362967+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report_test.go:33 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.36297+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362976+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362982+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing/synctest.testingSynctestTest in goroutine 5\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.362983+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2150 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.363444+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:24.36345+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"FAIL\\texample.com/guardrails/internal/report\\t0.367s\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.363455+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Elapsed\":0.367}\n",
+      "execution_error": false
+    },
+    {
+      "name": "Forward cancellation rejects cancellation checked only before send",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestForwardCancellation$",
+        "./internal/report"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:24.549967+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/report\"}\n{\"Time\":\"2026-09-16T21:34:24.914923+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\"}\n{\"Time\":\"2026-09-16T21:34:24.914962+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"=== RUN   TestForwardCancellation\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.915007+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"--- FAIL: TestForwardCancellation (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918012+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"panic: deadlock: all goroutines in bubble are blocked [recovered, repanicked]\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918029+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918041+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 21 [running]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918063+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner.func1.2({<address>, <address>})\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918098+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:1974 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918105+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918111+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:1977 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918116+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"panic({<address>?, <address>?})\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918118+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/runtime/panic.go:860 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918128+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"internal/synctest.Run(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.91813+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/runtime/synctest.go:251 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918153+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.Test(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918156+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:290 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918159+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.TestForwardCancellation(<address>?)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918162+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report_test.go:21 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918169+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918171+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918177+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing.(*T).Run in goroutine 1\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918179+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2101 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918181+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918183+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 22 [chan receive (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918202+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.testingSynctestTest(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918212+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2151 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918214+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.Test.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918216+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:291 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.91822+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing/synctest.Test in goroutine 21\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918222+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:290 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918223+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918227+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 23 [chan receive (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918231+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.TestForwardCancellation.func1(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918242+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report_test.go:33 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918245+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918246+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.91826+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing/synctest.testingSynctestTest in goroutine 22\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918262+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2150 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918264+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918266+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 24 [chan send (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918267+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.Forward.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918269+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report.go:25 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918274+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by example.com/guardrails/internal/report.Forward in goroutine 23\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.91828+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report.go:23 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918887+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:24.918894+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"FAIL\\texample.com/guardrails/internal/report\\t0.369s\\n\"}\n{\"Time\":\"2026-09-16T21:34:24.918899+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Elapsed\":0.369}\n",
+      "execution_error": false
+    },
+    {
+      "name": "Forward cancellation rejects unconditional send",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestForwardCancellation$",
+        "./internal/report"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:25.108754+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/report\"}\n{\"Time\":\"2026-09-16T21:34:25.470916+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\"}\n{\"Time\":\"2026-09-16T21:34:25.471009+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"=== RUN   TestForwardCancellation\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.47103+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"--- FAIL: TestForwardCancellation (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.473983+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"panic: deadlock: all goroutines in bubble are blocked [recovered, repanicked]\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474009+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474025+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 7 [running]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474029+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner.func1.2({<address>, <address>})\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474045+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:1974 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474047+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474048+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:1977 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474049+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"panic({<address>?, <address>?})\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474052+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/runtime/panic.go:860 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474053+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"internal/synctest.Run(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474055+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/runtime/synctest.go:251 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474062+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.Test(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474063+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:290 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474064+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.TestForwardCancellation(<address>?)\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474066+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report_test.go:21 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474088+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.47409+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474091+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing.(*T).Run in goroutine 1\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474092+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2101 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474093+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474095+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 8 [chan receive (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474102+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.testingSynctestTest(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474111+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2151 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474113+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing/synctest.Test.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474114+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:291 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474115+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing/synctest.Test in goroutine 7\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474116+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/synctest/synctest.go:290 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474117+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474118+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 9 [chan receive (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474119+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.TestForwardCancellation.func1(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474121+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report_test.go:33 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474122+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474123+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474127+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by testing/synctest.testingSynctestTest in goroutine 8\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474128+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2150 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474129+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.47413+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"goroutine 10 [chan send (durable), synctest bubble 1]:\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474136+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"example.com/guardrails/internal/report.Forward.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474138+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report.go:25 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474144+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"created by example.com/guardrails/internal/report.Forward in goroutine 9\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474145+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Output\":\"\\t<experiment>/example/internal/report/report.go:23 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474692+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardCancellation\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:25.474697+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"FAIL\\texample.com/guardrails/internal/report\\t0.366s\\n\"}\n{\"Time\":\"2026-09-16T21:34:25.474704+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Elapsed\":0.366}\n",
+      "execution_error": false
+    },
+    {
+      "name": "Forward delivery checks received value",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestForwardDelivery$",
+        "./internal/report"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:25.650881+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/report\"}\n{\"Time\":\"2026-09-16T21:34:26.019293+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardDelivery\"}\n{\"Time\":\"2026-09-16T21:34:26.019371+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardDelivery\",\"Output\":\"=== RUN   TestForwardDelivery\\n\"}\n{\"Time\":\"2026-09-16T21:34:26.019382+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardDelivery\",\"Output\":\"    report_test.go:49: Forward() delivered 43, want 42\\n\"}\n{\"Time\":\"2026-09-16T21:34:26.019419+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardDelivery\",\"Output\":\"--- FAIL: TestForwardDelivery (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:26.019442+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestForwardDelivery\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:26.019451+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:26.019846+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"FAIL\\texample.com/guardrails/internal/report\\t0.369s\\n\"}\n{\"Time\":\"2026-09-16T21:34:26.019855+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Elapsed\":0.369}\n",
+      "execution_error": false
+    },
+    {
+      "name": "wrong field survives partial assertion",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestToView$",
+        "./internal/report"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 0,
+      "output": "{\"Time\":\"2026-09-16T21:34:26.191162+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/report\"}\n{\"Time\":\"2026-09-16T21:34:26.563742+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\"}\n{\"Time\":\"2026-09-16T21:34:26.563788+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Output\":\"=== RUN   TestToView\\n\"}\n{\"Time\":\"2026-09-16T21:34:26.56385+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Output\":\"--- PASS: TestToView (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:26.563862+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:26.563868+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:34:26.564882+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"ok  \\texample.com/guardrails/internal/report\\t0.374s\\n\"}\n{\"Time\":\"2026-09-16T21:34:26.564904+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/report\",\"Elapsed\":0.374}\n",
+      "execution_error": false
+    },
+    {
+      "name": "whole result detects wrong field",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestToView$",
+        "./internal/report"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:26.757845+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/report\"}\n{\"Time\":\"2026-09-16T21:34:27.158373+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\"}\n{\"Time\":\"2026-09-16T21:34:27.158436+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Output\":\"=== RUN   TestToView\\n\"}\n{\"Time\":\"2026-09-16T21:34:27.158452+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Output\":\"    report_test.go:16: ToView() = {ID:7 Region:}, want {ID:7 Region:north}\\n\"}\n{\"Time\":\"2026-09-16T21:34:27.158471+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Output\":\"--- FAIL: TestToView (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:27.158473+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:27.158476+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:27.158902+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"FAIL\\texample.com/guardrails/internal/report\\t0.401s\\n\"}\n{\"Time\":\"2026-09-16T21:34:27.158926+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails/internal/report\",\"Elapsed\":0.401}\n",
+      "execution_error": false
+    },
+    {
+      "name": "new zero field survives equality",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestToView$",
+        "./internal/report"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 0,
+      "output": "{\"Time\":\"2026-09-16T21:34:27.343543+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails/internal/report\"}\n{\"Time\":\"2026-09-16T21:34:27.726678+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\"}\n{\"Time\":\"2026-09-16T21:34:27.726744+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Output\":\"=== RUN   TestToView\\n\"}\n{\"Time\":\"2026-09-16T21:34:27.726767+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Output\":\"--- PASS: TestToView (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:27.726769+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/report\",\"Test\":\"TestToView\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:34:27.726774+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:34:27.727107+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails/internal/report\",\"Output\":\"ok  \\texample.com/guardrails/internal/report\\t0.383s\\n\"}\n{\"Time\":\"2026-09-16T21:34:27.727123+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails/internal/report\",\"Elapsed\":0.384}\n",
+      "execution_error": false
+    },
+    {
+      "name": "exhaustruct checks new field",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "exhaustruct.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./internal/report"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "typed linter diagnostic found",
+      "returncode": 1,
+      "output": "{\"Issues\":[{\"FromLinter\":\"exhaustruct\",\"Text\":\"report.View is missing field Currency\",\"Severity\":\"\",\"SourceLines\":[\"\\treturn View{ID: record.ID, Region: record.Region}\"],\"Pos\":{\"Filename\":\"internal/report/report.go\",\"Offset\":211,\"Line\":18,\"Column\":9},\"ExpectNoLint\":false,\"ExpectedNoLintLinter\":\"\"},{\"FromLinter\":\"exhaustruct\",\"Text\":\"report.View is missing field Currency\",\"Severity\":\"\",\"SourceLines\":[\"\\twant := View{ID: 7, Region: \\\"north\\\"}\"],\"Pos\":{\"Filename\":\"internal/report/report_test.go\",\"Offset\":183,\"Line\":14,\"Column\":10},\"ExpectNoLint\":false,\"ExpectedNoLintLinter\":\"\"}],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\"},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\"},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\",\"Enabled\":true},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "schema permits syntactically valid wrong scope",
+      "command": [
+        "golangci-lint",
+        "config",
+        "verify",
+        "-c",
+        "bad.yml",
+        "--schema",
+        "file://<example>/schemas/golangci.v2.10.jsonschema.json"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "schema validation must succeed",
+      "returncode": 0,
+      "output": "",
+      "execution_error": false
+    },
+    {
+      "name": "counterexample rejects wrong exhaustruct scope",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "bad.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./internal/report"
+      ],
+      "expected": "reject",
+      "verified": true,
+      "reason": "unexpected linter exit code",
+      "returncode": 0,
+      "output": "{\"Issues\":[],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\"},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\"},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\",\"Enabled\":true},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "depguard boundary storage",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "depguard.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./internal/reportcalc"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "typed linter diagnostic found",
+      "returncode": 1,
+      "output": "{\"Issues\":[{\"FromLinter\":\"depguard\",\"Text\":\"import 'example.com/guardrails/internal/storage' is not allowed from list 'calculation': calculations must not depend on storage\",\"Severity\":\"\",\"SourceLines\":[\"import _ \\\"example.com/guardrails/internal/storage\\\"\"],\"Pos\":{\"Filename\":\"internal/reportcalc/calc.go\",\"Offset\":26,\"Line\":2,\"Column\":8},\"SuggestedFixes\":[{\"Message\":\"calculations must not depend on storage\",\"TextEdits\":null}],\"ExpectNoLint\":false,\"ExpectedNoLintLinter\":\"\"}],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\"},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\",\"Enabled\":true},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "architecture boundary storage",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestArchitecture$",
+        "."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:28.764227+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:29.14224+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:29.142291+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:29.47695+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"    architecture_test.go:69: ARCH001: calculation depends on storage: example.com/guardrails/internal/reportcalc -\\u003e example.com/guardrails/internal/storage\\n\"}\n{\"Time\":\"2026-09-16T21:34:29.477013+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- FAIL: TestArchitecture (0.33s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:29.477016+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":0.33}\n{\"Time\":\"2026-09-16T21:34:29.477026+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:29.480956+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\texample.com/guardrails\\t0.716s\\n\"}\n{\"Time\":\"2026-09-16T21:34:29.480986+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Elapsed\":0.717}\n",
+      "execution_error": false
+    },
+    {
+      "name": "depguard boundary storage/reader",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "depguard.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./internal/reportcalc"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "typed linter diagnostic found",
+      "returncode": 1,
+      "output": "{\"Issues\":[{\"FromLinter\":\"depguard\",\"Text\":\"import 'example.com/guardrails/internal/storage/reader' is not allowed from list 'calculation': calculations must not depend on storage\",\"Severity\":\"\",\"SourceLines\":[\"import _ \\\"example.com/guardrails/internal/storage/reader\\\"\"],\"Pos\":{\"Filename\":\"internal/reportcalc/calc.go\",\"Offset\":26,\"Line\":2,\"Column\":8},\"SuggestedFixes\":[{\"Message\":\"calculations must not depend on storage\",\"TextEdits\":null}],\"ExpectNoLint\":false,\"ExpectedNoLintLinter\":\"\"}],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\"},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\",\"Enabled\":true},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "architecture boundary storage/reader",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestArchitecture$",
+        "."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:29.820465+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:30.105017+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:30.105089+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:30.446735+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"    architecture_test.go:69: ARCH001: calculation depends on storage: example.com/guardrails/internal/reportcalc -\\u003e example.com/guardrails/internal/storage/reader\\n\"}\n{\"Time\":\"2026-09-16T21:34:30.446818+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- FAIL: TestArchitecture (0.34s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:30.446823+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":0.34}\n{\"Time\":\"2026-09-16T21:34:30.446839+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:30.450944+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\texample.com/guardrails\\t0.630s\\n\"}\n{\"Time\":\"2026-09-16T21:34:30.450962+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Elapsed\":0.631}\n",
+      "execution_error": false
+    },
+    {
+      "name": "depguard boundary storagecache",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "depguard.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./internal/reportcalc"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "no issues",
+      "returncode": 0,
+      "output": "{\"Issues\":[],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\"},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\",\"Enabled\":true},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "architecture boundary storagecache",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestArchitecture$",
+        "."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 0,
+      "output": "{\"Time\":\"2026-09-16T21:34:30.768859+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:31.063589+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:31.063705+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:31.408399+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- PASS: TestArchitecture (0.34s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:31.408425+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":0.34}\n{\"Time\":\"2026-09-16T21:34:31.408433+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:34:31.412579+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"ok  \\texample.com/guardrails\\t0.643s\\n\"}\n{\"Time\":\"2026-09-16T21:34:31.412601+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Elapsed\":0.644}\n",
+      "execution_error": false
+    },
+    {
+      "name": "depguard does not traverse imports",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "depguard.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./internal/reportcalc"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "no issues",
+      "returncode": 0,
+      "output": "{\"Issues\":[],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\"},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\",\"Enabled\":true},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "architecture finds transitive dependency",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestArchitecture$",
+        "."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:31.73838+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:32.011741+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:32.011871+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:32.366783+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"    architecture_test.go:69: ARCH001: calculation depends on storage: example.com/guardrails/internal/reportcalc -\\u003e example.com/guardrails/internal/shared -\\u003e example.com/guardrails/internal/storage\\n\"}\n{\"Time\":\"2026-09-16T21:34:32.366848+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- FAIL: TestArchitecture (0.36s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:32.366851+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":0.36}\n{\"Time\":\"2026-09-16T21:34:32.366859+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:32.370953+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\texample.com/guardrails\\t0.632s\\n\"}\n{\"Time\":\"2026-09-16T21:34:32.370981+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Elapsed\":0.633}\n",
+      "execution_error": false
+    },
+    {
+      "name": "depguard includes nested calculation packages",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "depguard.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./internal/reportcalc/..."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "typed linter diagnostic found",
+      "returncode": 1,
+      "output": "{\"Issues\":[{\"FromLinter\":\"depguard\",\"Text\":\"import 'example.com/guardrails/internal/storage' is not allowed from list 'calculation': calculations must not depend on storage\",\"Severity\":\"\",\"SourceLines\":[\"import _ \\\"example.com/guardrails/internal/storage\\\"\"],\"Pos\":{\"Filename\":\"internal/reportcalc/nested/nested.go\",\"Offset\":22,\"Line\":2,\"Column\":8},\"SuggestedFixes\":[{\"Message\":\"calculations must not depend on storage\",\"TextEdits\":null}],\"ExpectNoLint\":false,\"ExpectedNoLintLinter\":\"\"}],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\"},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\",\"Enabled\":true},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "architecture includes nested calculation packages",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestArchitecture$",
+        "."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:32.707013+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:32.965191+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:32.965252+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:33.317355+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"    architecture_test.go:69: ARCH001: calculation depends on storage: example.com/guardrails/internal/reportcalc/nested -\\u003e example.com/guardrails/internal/storage\\n\"}\n{\"Time\":\"2026-09-16T21:34:33.317407+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- FAIL: TestArchitecture (0.35s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:33.317414+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":0.35}\n{\"Time\":\"2026-09-16T21:34:33.317421+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:33.321302+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\texample.com/guardrails\\t0.614s\\n\"}\n{\"Time\":\"2026-09-16T21:34:33.321321+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Elapsed\":0.614}\n",
+      "execution_error": false
+    },
+    {
+      "name": "depguard excludes test-only dependencies",
+      "command": [
+        "golangci-lint",
+        "run",
+        "-c",
+        "depguard.yml",
+        "--output.json.path=stdout",
+        "--output.text.path=/dev/null",
+        "--show-stats=false",
+        "--max-issues-per-linter=0",
+        "--max-same-issues=0",
+        "--uniq-by-line=false",
+        "./internal/reportcalc"
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "no issues",
+      "returncode": 0,
+      "output": "{\"Issues\":[],\"Report\":{\"Linters\":[{\"Name\":\"arangolint\"},{\"Name\":\"asasalint\"},{\"Name\":\"asciicheck\"},{\"Name\":\"bidichk\"},{\"Name\":\"bodyclose\"},{\"Name\":\"canonicalheader\"},{\"Name\":\"containedctx\"},{\"Name\":\"contextcheck\"},{\"Name\":\"copyloopvar\"},{\"Name\":\"cyclop\"},{\"Name\":\"decorder\"},{\"Name\":\"depguard\",\"Enabled\":true},{\"Name\":\"dogsled\"},{\"Name\":\"dupl\"},{\"Name\":\"dupword\"},{\"Name\":\"durationcheck\"},{\"Name\":\"embeddedstructfieldcheck\"},{\"Name\":\"errcheck\"},{\"Name\":\"errchkjson\"},{\"Name\":\"errname\"},{\"Name\":\"errorlint\"},{\"Name\":\"exhaustive\"},{\"Name\":\"exhaustruct\"},{\"Name\":\"exptostd\"},{\"Name\":\"forbidigo\"},{\"Name\":\"forcetypeassert\"},{\"Name\":\"funcorder\"},{\"Name\":\"fatcontext\"},{\"Name\":\"funlen\"},{\"Name\":\"gci\"},{\"Name\":\"ginkgolinter\"},{\"Name\":\"gocheckcompilerdirectives\"},{\"Name\":\"gochecknoglobals\"},{\"Name\":\"gochecknoinits\"},{\"Name\":\"gochecksumtype\"},{\"Name\":\"gocognit\"},{\"Name\":\"goconst\"},{\"Name\":\"gocritic\"},{\"Name\":\"gocyclo\"},{\"Name\":\"godoclint\"},{\"Name\":\"godot\"},{\"Name\":\"godox\"},{\"Name\":\"err113\"},{\"Name\":\"gofmt\"},{\"Name\":\"gofumpt\"},{\"Name\":\"golines\"},{\"Name\":\"goheader\"},{\"Name\":\"goimports\"},{\"Name\":\"mnd\"},{\"Name\":\"modernize\"},{\"Name\":\"gomoddirectives\"},{\"Name\":\"gomodguard\"},{\"Name\":\"goprintffuncname\"},{\"Name\":\"gosec\"},{\"Name\":\"gosmopolitan\"},{\"Name\":\"govet\"},{\"Name\":\"grouper\"},{\"Name\":\"iface\"},{\"Name\":\"importas\"},{\"Name\":\"inamedparam\"},{\"Name\":\"ineffassign\"},{\"Name\":\"interfacebloat\"},{\"Name\":\"intrange\"},{\"Name\":\"iotamixing\"},{\"Name\":\"ireturn\"},{\"Name\":\"lll\"},{\"Name\":\"loggercheck\"},{\"Name\":\"maintidx\"},{\"Name\":\"makezero\"},{\"Name\":\"mirror\"},{\"Name\":\"misspell\"},{\"Name\":\"musttag\"},{\"Name\":\"nakedret\"},{\"Name\":\"nestif\"},{\"Name\":\"nilerr\"},{\"Name\":\"nilnesserr\"},{\"Name\":\"nilnil\"},{\"Name\":\"nlreturn\"},{\"Name\":\"noctx\"},{\"Name\":\"noinlineerr\"},{\"Name\":\"nonamedreturns\"},{\"Name\":\"nosprintfhostport\"},{\"Name\":\"paralleltest\"},{\"Name\":\"perfsprint\"},{\"Name\":\"prealloc\"},{\"Name\":\"predeclared\"},{\"Name\":\"promlinter\"},{\"Name\":\"protogetter\"},{\"Name\":\"reassign\"},{\"Name\":\"recvcheck\"},{\"Name\":\"revive\"},{\"Name\":\"rowserrcheck\"},{\"Name\":\"sloglint\"},{\"Name\":\"sqlclosecheck\"},{\"Name\":\"spancheck\"},{\"Name\":\"staticcheck\"},{\"Name\":\"swaggo\"},{\"Name\":\"tagalign\"},{\"Name\":\"tagliatelle\"},{\"Name\":\"testableexamples\"},{\"Name\":\"testifylint\"},{\"Name\":\"testpackage\"},{\"Name\":\"thelper\"},{\"Name\":\"tparallel\"},{\"Name\":\"typecheck\",\"Enabled\":true},{\"Name\":\"unconvert\"},{\"Name\":\"unparam\"},{\"Name\":\"unqueryvet\"},{\"Name\":\"unused\"},{\"Name\":\"usestdlibvars\"},{\"Name\":\"usetesting\"},{\"Name\":\"varnamelen\"},{\"Name\":\"wastedassign\"},{\"Name\":\"whitespace\"},{\"Name\":\"wrapcheck\"},{\"Name\":\"wsl\"},{\"Name\":\"wsl_v5\"},{\"Name\":\"zerologlint\"},{\"Name\":\"nolintlint\"}]}}\n",
+      "execution_error": false
+    },
+    {
+      "name": "architecture excludes test-only dependencies",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestArchitecture$",
+        "."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 0,
+      "output": "{\"Time\":\"2026-09-16T21:34:33.825434+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:34.088149+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:34.088211+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:34.438832+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- PASS: TestArchitecture (0.35s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:34.438866+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":0.35}\n{\"Time\":\"2026-09-16T21:34:34.438874+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:34:34.446631+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"ok  \\texample.com/guardrails\\t0.621s\\n\"}\n{\"Time\":\"2026-09-16T21:34:34.446656+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/guardrails\",\"Elapsed\":0.621}\n",
+      "execution_error": false
+    },
+    {
+      "name": "architecture uses shared build flags",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestArchitecture$",
+        "."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:34.677226+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:35.07675+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:35.076819+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:35.430745+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"    architecture_test.go:69: ARCH001: calculation depends on storage: example.com/guardrails/internal/reportcalc -\\u003e example.com/guardrails/internal/storage\\n\"}\n{\"Time\":\"2026-09-16T21:34:35.430805+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- FAIL: TestArchitecture (0.35s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:35.430808+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":0.35}\n{\"Time\":\"2026-09-16T21:34:35.430821+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:35.437714+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\texample.com/guardrails\\t0.760s\\n\"}\n{\"Time\":\"2026-09-16T21:34:35.437738+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Elapsed\":0.761}\n",
+      "execution_error": false
+    },
+    {
+      "name": "architecture rejects missing target",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestArchitecture$",
+        "."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:35.685279+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:36.101219+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:36.101322+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:36.459499+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"    architecture_test.go:60: architecture target package missing; review storageRoot\\n\"}\n{\"Time\":\"2026-09-16T21:34:36.459544+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- FAIL: TestArchitecture (0.36s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:36.459547+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":0.36}\n{\"Time\":\"2026-09-16T21:34:36.459557+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:36.46551+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\texample.com/guardrails\\t0.780s\\n\"}\n{\"Time\":\"2026-09-16T21:34:36.465537+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Elapsed\":0.78}\n",
+      "execution_error": false
+    },
+    {
+      "name": "architecture rejects empty source scope",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestArchitecture$",
+        "."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:36.726075+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:37.097441+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:37.097505+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:37.436515+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"    architecture_test.go:73: no calculation packages checked; review the architecture rule\\n\"}\n{\"Time\":\"2026-09-16T21:34:37.436565+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- FAIL: TestArchitecture (0.34s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:37.436568+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":0.34}\n{\"Time\":\"2026-09-16T21:34:37.436578+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:37.440417+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\texample.com/guardrails\\t0.714s\\n\"}\n{\"Time\":\"2026-09-16T21:34:37.440446+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Elapsed\":0.714}\n",
+      "execution_error": false
+    },
+    {
+      "name": "architecture fails when graph cannot load",
+      "command": [
+        "go",
+        "test",
+        "-json",
+        "-count=1",
+        "-timeout=10s",
+        "-run",
+        "^TestArchitecture$",
+        "."
+      ],
+      "expected": "accept",
+      "verified": true,
+      "reason": "expected test evidence observed",
+      "returncode": 1,
+      "output": "{\"Time\":\"2026-09-16T21:34:37.649547+03:00\",\"Action\":\"start\",\"Package\":\"example.com/guardrails\"}\n{\"Time\":\"2026-09-16T21:34:37.893568+03:00\",\"Action\":\"run\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\"}\n{\"Time\":\"2026-09-16T21:34:37.893606+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"=== RUN   TestArchitecture\\n\"}\n{\"Time\":\"2026-09-16T21:34:38.226327+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"<experiment>/example/internal/reportcalc/broken.go:2:18: cannot use \\\"wrong\\\" (untyped string constant) as int value in variable declaration\\n\"}\n{\"Time\":\"2026-09-16T21:34:38.226375+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"    architecture_test.go:51: cannot load the production package graph\\n\"}\n{\"Time\":\"2026-09-16T21:34:38.226395+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Output\":\"--- FAIL: TestArchitecture (0.33s)\\n\"}\n{\"Time\":\"2026-09-16T21:34:38.226399+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Test\":\"TestArchitecture\",\"Elapsed\":0.33}\n{\"Time\":\"2026-09-16T21:34:38.226405+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:34:38.231018+03:00\",\"Action\":\"output\",\"Package\":\"example.com/guardrails\",\"Output\":\"FAIL\\texample.com/guardrails\\t0.581s\\n\"}\n{\"Time\":\"2026-09-16T21:34:38.231044+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/guardrails\",\"Elapsed\":0.582}\n",
+      "execution_error": false
+    }
+  ]
+}

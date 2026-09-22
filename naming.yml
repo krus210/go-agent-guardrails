@@ -1,0 +1,10 @@
+version: "2"
+linters:
+  default: none
+  enable:
+    - revive
+  settings:
+    revive:
+      enable-default-rules: false
+      rules:
+        - name: var-naming

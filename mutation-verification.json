@@ -1,0 +1,160 @@
+{
+  "schema_version": 2,
+  "created_at": "20260916T183657.778545Z",
+  "tools": {
+    "go": "go1.26.0",
+    "GOTOOLCHAIN": "go1.26.0",
+    "GOOS": "darwin",
+    "GOARCH": "arm64",
+    "CGO_ENABLED": "1",
+    "go-mutesting": "v0.0.0-20251226130216-48d0401f00fb"
+  },
+  "verified": true,
+  "error": null,
+  "results": [
+    {
+      "name": "weak",
+      "verified": true,
+      "mutants": [
+        {
+          "source": "package policy func Allowed(size int) bool { return size < 10 }",
+          "sha256": "4be783e0617ee1a90e67f66d0b92ce6ef2641e7ba6de3b8979e24e96139e85b2",
+          "status": "survived",
+          "reason": "expected test evidence observed",
+          "returncode": 0,
+          "output": "{\"Time\":\"2026-09-16T21:36:50.809332+03:00\",\"Action\":\"start\",\"Package\":\"example.com/mutationdemo\"}\n{\"Time\":\"2026-09-16T21:36:51.16604+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:36:51.166072+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:36:51.166116+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"--- PASS: TestAllowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:51.166122+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:51.166125+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:36:51.166617+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"ok  \\texample.com/mutationdemo\\t0.357s\\n\"}\n{\"Time\":\"2026-09-16T21:36:51.166633+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Elapsed\":0.357}\n",
+          "execution_error": false
+        },
+        {
+          "source": "package policy func Allowed(size int) bool { return size <= 9 }",
+          "sha256": "09b506fcc40b39c664388324873c8323bfd9d00733de6d5f049e98ebd5ab6c55",
+          "status": "survived",
+          "reason": "expected test evidence observed",
+          "returncode": 0,
+          "output": "{\"Time\":\"2026-09-16T21:36:51.413859+03:00\",\"Action\":\"start\",\"Package\":\"example.com/mutationdemo\"}\n{\"Time\":\"2026-09-16T21:36:51.762065+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:36:51.762119+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:36:51.762136+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"--- PASS: TestAllowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:51.762139+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:51.762143+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:36:51.762542+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"ok  \\texample.com/mutationdemo\\t0.349s\\n\"}\n{\"Time\":\"2026-09-16T21:36:51.762552+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Elapsed\":0.349}\n",
+          "execution_error": false
+        },
+        {
+          "source": "package policy func Allowed(size int) bool { return size <= 11 }",
+          "sha256": "3c4dbc10109dc24398ddc9a8b0011372b4831ef2e374e8f1d90d9948c83a4c74",
+          "status": "survived",
+          "reason": "expected test evidence observed",
+          "returncode": 0,
+          "output": "{\"Time\":\"2026-09-16T21:36:51.976301+03:00\",\"Action\":\"start\",\"Package\":\"example.com/mutationdemo\"}\n{\"Time\":\"2026-09-16T21:36:52.383586+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:36:52.383647+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:36:52.383738+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"--- PASS: TestAllowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:52.383752+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:52.383757+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:36:52.384855+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"ok  \\texample.com/mutationdemo\\t0.408s\\n\"}\n{\"Time\":\"2026-09-16T21:36:52.384878+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Elapsed\":0.409}\n",
+          "execution_error": false
+        }
+      ],
+      "returncode": 0,
+      "output": "FAIL \"/var/folders/wz/5gvc8g7x67500fvb17jdqknw0000gn/T/go-mutesting-3851001049/limit.go.0\" with checksum 45e8f2890887b2e2f000741724421731\n------------------------------------------------------------------------------------------------------------------------------------------------------\nFAIL \"/var/folders/wz/5gvc8g7x67500fvb17jdqknw0000gn/T/go-mutesting-3851001049/limit.go.1\" with checksum f7b712264c02b7fc2ce435205920211e\n------------------------------------------------------------------------------------------------------------------------------------------------------\nFAIL \"/var/folders/wz/5gvc8g7x67500fvb17jdqknw0000gn/T/go-mutesting-3851001049/limit.go.2\" with checksum 899958b4434c26f25a376422c27d4dc6\n------------------------------------------------------------------------------------------------------------------------------------------------------\nThe mutation score is 0.000000 (0 passed, 3 failed, 0 duplicated, 0 skipped, total is 3)\n",
+      "execution_error": false
+    },
+    {
+      "name": "boundary",
+      "verified": true,
+      "mutants": [
+        {
+          "source": "package policy func Allowed(size int) bool { return size < 10 }",
+          "sha256": "4be783e0617ee1a90e67f66d0b92ce6ef2641e7ba6de3b8979e24e96139e85b2",
+          "status": "killed",
+          "reason": "expected test evidence observed",
+          "returncode": 1,
+          "output": "{\"Time\":\"2026-09-16T21:36:53.159092+03:00\",\"Action\":\"start\",\"Package\":\"example.com/mutationdemo\"}\n{\"Time\":\"2026-09-16T21:36:53.556165+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:36:53.556213+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.556249+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\"}\n{\"Time\":\"2026-09-16T21:36:53.556251+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\",\"Output\":\"=== RUN   TestAllowed/below\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.556259+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\",\"Output\":\"--- PASS: TestAllowed/below (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.556261+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:53.556265+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\"}\n{\"Time\":\"2026-09-16T21:36:53.556266+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"=== RUN   TestAllowed/boundary\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.556267+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"    limit_test.go:17: Allowed(10) = false, want true\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.556286+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"--- FAIL: TestAllowed/boundary (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.556294+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:53.556295+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\"}\n{\"Time\":\"2026-09-16T21:36:53.556296+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\",\"Output\":\"=== RUN   TestAllowed/above\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.556298+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\",\"Output\":\"--- PASS: TestAllowed/above (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.556299+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:53.556301+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"--- FAIL: TestAllowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.556302+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:53.556304+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.55686+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"FAIL\\texample.com/mutationdemo\\t0.398s\\n\"}\n{\"Time\":\"2026-09-16T21:36:53.556874+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Elapsed\":0.398}\n",
+          "execution_error": false
+        },
+        {
+          "source": "package policy func Allowed(size int) bool { return size <= 9 }",
+          "sha256": "09b506fcc40b39c664388324873c8323bfd9d00733de6d5f049e98ebd5ab6c55",
+          "status": "killed",
+          "reason": "expected test evidence observed",
+          "returncode": 1,
+          "output": "{\"Time\":\"2026-09-16T21:36:53.782969+03:00\",\"Action\":\"start\",\"Package\":\"example.com/mutationdemo\"}\n{\"Time\":\"2026-09-16T21:36:54.13894+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:36:54.138987+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.139032+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\"}\n{\"Time\":\"2026-09-16T21:36:54.139034+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\",\"Output\":\"=== RUN   TestAllowed/below\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.139043+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\",\"Output\":\"--- PASS: TestAllowed/below (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.139045+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:54.139048+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\"}\n{\"Time\":\"2026-09-16T21:36:54.13905+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"=== RUN   TestAllowed/boundary\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.139051+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"    limit_test.go:17: Allowed(10) = false, want true\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.13906+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"--- FAIL: TestAllowed/boundary (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.139065+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:54.139066+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\"}\n{\"Time\":\"2026-09-16T21:36:54.139068+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\",\"Output\":\"=== RUN   TestAllowed/above\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.13907+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\",\"Output\":\"--- PASS: TestAllowed/above (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.139071+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:54.139073+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"--- FAIL: TestAllowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.139075+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:54.139076+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.13967+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"FAIL\\texample.com/mutationdemo\\t0.356s\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.139685+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Elapsed\":0.357}\n",
+          "execution_error": false
+        },
+        {
+          "source": "package policy func Allowed(size int) bool { return size <= 11 }",
+          "sha256": "3c4dbc10109dc24398ddc9a8b0011372b4831ef2e374e8f1d90d9948c83a4c74",
+          "status": "killed",
+          "reason": "expected test evidence observed",
+          "returncode": 1,
+          "output": "{\"Time\":\"2026-09-16T21:36:54.36456+03:00\",\"Action\":\"start\",\"Package\":\"example.com/mutationdemo\"}\n{\"Time\":\"2026-09-16T21:36:54.747409+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:36:54.74743+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.747465+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\"}\n{\"Time\":\"2026-09-16T21:36:54.747467+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\",\"Output\":\"=== RUN   TestAllowed/below\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.747487+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\",\"Output\":\"--- PASS: TestAllowed/below (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.74749+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/below\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:54.747493+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\"}\n{\"Time\":\"2026-09-16T21:36:54.747494+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"=== RUN   TestAllowed/boundary\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.747496+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Output\":\"--- PASS: TestAllowed/boundary (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.747499+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/boundary\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:54.7475+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\"}\n{\"Time\":\"2026-09-16T21:36:54.747501+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\",\"Output\":\"=== RUN   TestAllowed/above\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.747502+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\",\"Output\":\"    limit_test.go:17: Allowed(11) = true, want false\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.747504+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\",\"Output\":\"--- FAIL: TestAllowed/above (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.747505+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed/above\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:54.747507+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"--- FAIL: TestAllowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.747508+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:54.74751+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.748259+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"FAIL\\texample.com/mutationdemo\\t0.383s\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.748316+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Elapsed\":0.384}\n",
+          "execution_error": false
+        }
+      ],
+      "returncode": 0,
+      "output": "PASS \"/var/folders/wz/5gvc8g7x67500fvb17jdqknw0000gn/T/go-mutesting-1939587663/limit.go.0\" with checksum 45e8f2890887b2e2f000741724421731\n------------------------------------------------------------------------------------------------------------------------------------------------------\nPASS \"/var/folders/wz/5gvc8g7x67500fvb17jdqknw0000gn/T/go-mutesting-1939587663/limit.go.1\" with checksum f7b712264c02b7fc2ce435205920211e\n------------------------------------------------------------------------------------------------------------------------------------------------------\nPASS \"/var/folders/wz/5gvc8g7x67500fvb17jdqknw0000gn/T/go-mutesting-1939587663/limit.go.2\" with checksum 899958b4434c26f25a376422c27d4dc6\n------------------------------------------------------------------------------------------------------------------------------------------------------\nThe mutation score is 1.000000 (3 passed, 0 failed, 0 duplicated, 0 skipped, total is 3)\n",
+      "execution_error": false
+    },
+    {
+      "name": "compile failure",
+      "verified": true,
+      "mutants": [
+        {
+          "source": "package policy func Allowed(size int) bool { return size <= 10 } var invalid int = \"wrong\"",
+          "sha256": "6162b749e0cdc93e0eb7f76d1814a53431b3af22a2e7301c03b7e7e90bd2aa21",
+          "status": "invalid",
+          "reason": "compilation, timeout, panic or execution failure",
+          "returncode": 1,
+          "output": "{\"ImportPath\":\"example.com/mutationdemo [example.com/mutationdemo.test]\",\"Action\":\"build-output\",\"Output\":\"# example.com/mutationdemo [example.com/mutationdemo.test]\\n\"}\n{\"ImportPath\":\"example.com/mutationdemo [example.com/mutationdemo.test]\",\"Action\":\"build-output\",\"Output\":\"./limit.go:7:19: cannot use \\\"wrong\\\" (untyped string constant) as int value in variable declaration\\n\"}\n{\"ImportPath\":\"example.com/mutationdemo [example.com/mutationdemo.test]\",\"Action\":\"build-fail\"}\n{\"Time\":\"2026-09-16T21:36:54.902793+03:00\",\"Action\":\"start\",\"Package\":\"example.com/mutationdemo\"}\n{\"Time\":\"2026-09-16T21:36:54.902848+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"FAIL\\texample.com/mutationdemo [build failed]\\n\"}\n{\"Time\":\"2026-09-16T21:36:54.902853+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Elapsed\":0,\"FailedBuild\":\"example.com/mutationdemo [example.com/mutationdemo.test]\"}\n",
+          "execution_error": false
+        }
+      ],
+      "returncode": 2,
+      "output": "",
+      "execution_error": false
+    },
+    {
+      "name": "timeout",
+      "verified": true,
+      "mutants": [
+        {
+          "source": "package policy func Allowed(size int) bool { select{} }",
+          "sha256": "7716ac90264384b125ae79d0abf2894b7eb78b1b28086646b5e32bc179341395",
+          "status": "invalid",
+          "reason": "compilation, timeout, panic or execution failure",
+          "returncode": 1,
+          "output": "{\"Time\":\"2026-09-16T21:36:55.122008+03:00\",\"Action\":\"start\",\"Package\":\"example.com/mutationdemo\"}\n{\"Time\":\"2026-09-16T21:36:55.525698+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:36:55.525745+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529288+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"panic: test timed out after 1s\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529332+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\trunning tests:\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529335+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t\\tTestAllowed (1s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529337+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.52934+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"goroutine 2 [running]:\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529344+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"testing.(*M).startAlarm.func1()\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529347+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2802 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529374+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"created by time.goFunc\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529381+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<GOROOT>/src/time/sleep.go:215 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529383+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529385+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"goroutine 1 [chan receive]:\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.52939+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"testing.(*T).Run(<address>, {<address>?, <address>?}, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.5294+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2109 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529406+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"testing.runTests.func1(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529408+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2585 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529409+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529413+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529415+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"testing.runTests({<address>, <address>}, {<address>, <address>}, <address>, {<address>, <address>, <address>}, {<address>?, <address>?, ...})\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529435+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2583 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529437+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"testing.(*M).Run(<address>)\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529439+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2443 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529441+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"main.main()\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529443+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t_testmain.go:46 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529445+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529446+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"goroutine 22 [select (no cases)]:\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529448+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"example.com/mutationdemo.Allowed(...)\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529449+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<experiment>/limit.go:2\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529452+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"example.com/mutationdemo.TestAllowed(<address>?)\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529453+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<experiment>/limit_test.go:3 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529462+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"testing.tRunner(<address>, <address>)\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529465+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2036 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529468+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"created by testing.(*T).Run in goroutine 1\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.529469+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"\\t<GOROOT>/src/testing/testing.go:2101 +<address>\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.53007+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"FAIL\\texample.com/mutationdemo\\t1.408s\\n\"}\n{\"Time\":\"2026-09-16T21:36:56.530087+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Elapsed\":1.408}\n",
+          "execution_error": false
+        }
+      ],
+      "returncode": 2,
+      "output": "",
+      "execution_error": false
+    },
+    {
+      "name": "unrelated assertion",
+      "verified": true,
+      "mutants": [
+        {
+          "source": "package policy func Allowed(size int) bool { return size <= 10 }",
+          "sha256": "19ef7d92fb7aa0c75cd9eeda27139780ee4828fb30378cf2630db0da8fdab960",
+          "status": "invalid",
+          "reason": "expected test diagnostic absent",
+          "returncode": 1,
+          "output": "{\"Time\":\"2026-09-16T21:36:56.756997+03:00\",\"Action\":\"start\",\"Package\":\"example.com/mutationdemo\"}\n{\"Time\":\"2026-09-16T21:36:57.129279+03:00\",\"Action\":\"run\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\"}\n{\"Time\":\"2026-09-16T21:36:57.129344+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"=== RUN   TestAllowed\\n\"}\n{\"Time\":\"2026-09-16T21:36:57.129475+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"    limit_test.go:3: unrelated\\n\"}\n{\"Time\":\"2026-09-16T21:36:57.129494+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Output\":\"--- FAIL: TestAllowed (0.00s)\\n\"}\n{\"Time\":\"2026-09-16T21:36:57.129498+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Test\":\"TestAllowed\",\"Elapsed\":0}\n{\"Time\":\"2026-09-16T21:36:57.129503+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"FAIL\\n\"}\n{\"Time\":\"2026-09-16T21:36:57.130293+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"FAIL\\texample.com/mutationdemo\\t0.373s\\n\"}\n{\"Time\":\"2026-09-16T21:36:57.130318+03:00\",\"Action\":\"fail\",\"Package\":\"example.com/mutationdemo\",\"Elapsed\":0.373}\n",
+          "execution_error": false
+        }
+      ],
+      "returncode": 2,
+      "output": "",
+      "execution_error": false
+    },
+    {
+      "name": "missing target test",
+      "verified": true,
+      "mutants": [
+        {
+          "source": "package policy func Allowed(size int) bool { return size <= 10 }",
+          "sha256": "19ef7d92fb7aa0c75cd9eeda27139780ee4828fb30378cf2630db0da8fdab960",
+          "status": "invalid",
+          "reason": "target test did not run",
+          "returncode": 0,
+          "output": "{\"Time\":\"2026-09-16T21:36:57.375259+03:00\",\"Action\":\"start\",\"Package\":\"example.com/mutationdemo\"}\n{\"Time\":\"2026-09-16T21:36:57.75198+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"testing: warning: no tests to run\\n\"}\n{\"Time\":\"2026-09-16T21:36:57.752129+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"PASS\\n\"}\n{\"Time\":\"2026-09-16T21:36:57.753284+03:00\",\"Action\":\"output\",\"Package\":\"example.com/mutationdemo\",\"Output\":\"ok  \\texample.com/mutationdemo\\t0.378s [no tests to run]\\n\"}\n{\"Time\":\"2026-09-16T21:36:57.753318+03:00\",\"Action\":\"pass\",\"Package\":\"example.com/mutationdemo\",\"Elapsed\":0.378}\n",
+          "execution_error": false
+        }
+      ],
+      "returncode": 2,
+      "output": "",
+      "execution_error": false
+    }
+  ]
+}
