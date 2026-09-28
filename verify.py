@@ -82,9 +82,8 @@ def main():
             original = broken.read_text()
             broken.write_text(original.replace("func TestDeadlock", "func broken(\nfunc TestDeadlock"))
             go("reject deadlock setup failure", work, "./testdata/deadlock", "TestDeadlock", BUBBLE_DEADLOCK, True)
-            broken.write_text('package deadlock\nimport ("testing"; "sync")\nfunc TestDeadlock(t *testing.T) { var mu sync.Mutex; mu.Lock(); mu.Lock() }\n')
-            go("reject mutex timeout as bubble deadlock", work, "./testdata/deadlock", "TestDeadlock", BUBBLE_DEADLOCK, True)
             broken.write_text(original)
+            go("reject mutex timeout as bubble deadlock", work, "./testdata/deadlock", "TestMutexDeadlock", BUBBLE_DEADLOCK, True)
             type_error = work / "testdata/bodyclose/broken.go"
             type_error.write_text('package bodyclose\nvar wrong int = "bodyclose"\n')
             check("reject bodyclose typecheck failure", command, work, body_judge, True)

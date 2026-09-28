@@ -154,11 +154,19 @@ Standalone negative examples:
 
 ```sh
 go test -count=1 ./testdata/leak       # goleak: unexpected goroutines
-go test -count=1 ./testdata/deadlock   # synctest: two goroutines blocked on each other's channels
+go test -count=1 -run '^TestDeadlock$' ./testdata/deadlock # synctest: channel deadlock
 go test -race -count=1 ./testdata/race # WARNING: DATA RACE
 ```
 
 synctest detects only durable blocking on bubble-owned channels and similar primitives. Waiting on `sync.Mutex`, I/O or system calls is not durable, so such hangs end in a test timeout, and a timeout alone does not prove a deadlock.
+
+[`TestMutexDeadlock`](testdata/deadlock/mutex_deadlock_test.go) deliberately calls `Lock` twice on the same mutex. The second call blocks, so the deferred `Unlock` cannot run. Run this example separately with a short timeout:
+
+```fish
+go test -count=1 -timeout=2s -run '^TestMutexDeadlock$' ./testdata/deadlock
+```
+
+The command is expected to fail with `panic: test timed out after 2s`. Inspect the goroutine stack to locate the blocked second `Lock`; the timeout itself only establishes that the test did not finish. `verify.py` uses this fixture to check that a mutex timeout is rejected as evidence of a synctest deadlock.
 
 ### Architecture
 
