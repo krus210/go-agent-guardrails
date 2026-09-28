@@ -26,16 +26,17 @@ The pinned versions are listed in `tool-versions.json`. They are pinned for repr
 
 ## Setup
 
-Run all commands from the repository root. The commands work in both bash and fish.
+Run all commands below from the repository root in the same fish session. Set the toolchain for the whole session before installing tools or running checks:
 
-```sh
-GOTOOLCHAIN=go1.27.1 go version
-GOTOOLCHAIN=go1.27.1 go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.2
-GOTOOLCHAIN=go1.27.1 go install github.com/avito-tech/go-mutesting/cmd/go-mutesting@v0.0.0-20251226130216-48d0401f00fb
-GOTOOLCHAIN=go1.27.1 go mod download
+```fish
+set -gx GOTOOLCHAIN go1.27.1
+go version
+go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.13.2
+go install github.com/avito-tech/go-mutesting/cmd/go-mutesting@v0.0.0-20251226130216-48d0401f00fb
+go mod download
 ```
 
-`GOTOOLCHAIN` pins the toolchain even if another `go` comes first in `PATH`; Go may download it on first use. See [Go toolchains](https://go.dev/doc/toolchain). Make sure the Go binary directory is in `PATH` and `golangci-lint version` reports 2.13.2 built with Go 1.27.1.
+`GOTOOLCHAIN` now applies to subsequent commands in this session, even if another `go` comes first in `PATH`; Go may download the toolchain on first use. The `go 1.27.0` line in `go.mod` sets a minimum version, not the exact 1.27.1 used here. See [Go toolchains](https://go.dev/doc/toolchain). Make sure the Go binary directory is in `PATH` and `golangci-lint version` reports 2.13.2 built with Go 1.27.1.
 
 ## Quick run
 
@@ -112,6 +113,14 @@ func Download(url string) (data []byte, err error) {
 	return io.ReadAll(response.Body)
 }
 ```
+
+[`TestDownloadReadAndClose`](internal/download/download_test.go) covers successful reading and closing, a read error, a close error, and both errors together. It checks that `Close` is called exactly once, returned data is preserved (including partial data on a read error), and each expected error can be found with `errors.Is`.
+
+```fish
+go test -race -count=1 -run '^TestDownloadReadAndClose$' ./internal/download
+```
+
+The test uses a fake `http.RoundTripper`, so it performs no network requests. Subtests run sequentially because they replace `http.DefaultClient`; cleanup restores the original client after each case. This test is included in `go test ./...` and the normal test step of `verify.py`.
 
 The example covers ownership of the response body only. Timeouts, context propagation and status handling are out of scope.
 
